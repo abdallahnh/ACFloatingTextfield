@@ -184,15 +184,6 @@
         [self floatTheLabel];
     }
     
-    
-    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 10)];
-    // spacerView.backgroundColor  = [UIColor redColor];
-    spacerView.backgroundColor = [UIColor yellowColor];
-    [self setRightViewMode:UITextFieldViewModeAlways];
-    [self setRightView:spacerView];
-    [self setLeftViewMode:UITextFieldViewModeAlways];
-    [self setLeftView:spacerView];
-    
 }
 
 #pragma mark :- Private Methods
