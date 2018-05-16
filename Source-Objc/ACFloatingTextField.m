@@ -19,6 +19,7 @@
 }
 @end
 @implementation ACFloatingTextField
+@synthesize labelAlignment;
 
 #pragma mark :- Drawing Methods
 -(void)drawRect:(CGRect)rect {
@@ -221,6 +222,10 @@
         [self hideError];
     }
 }
+-(void)setLabelAlignment:(NSTextAlignment)labelAlignment
+{
+     self.labelPlaceholder.textAlignment = labelAlignment;
+}
 -(void)addPlaceholderLabel{
 
     if (self.labelPlaceholder.superview != nil){
@@ -229,7 +234,7 @@
 
     _labelPlaceholder = [UILabel new];
     _labelPlaceholder.text = self.placeholder;
-    _labelPlaceholder.textAlignment = self.textAlignment;
+    _labelPlaceholder.textAlignment = self.labelAlignment;
     _labelPlaceholder.textColor = _placeHolderColor;
     _labelPlaceholder.font = [UIFont fontWithName:self.font.fontName size:kPlaceholderFontSize];
     _labelPlaceholder.hidden = YES;

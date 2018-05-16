@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef NS_ENUM(NSUInteger, ACTextAlignment) {
+    Left,
+    Right
+};
 IB_DESIGNABLE
-
 @interface ACFloatingTextField : UITextField
 {
     UIView *bottomLineView;
@@ -43,10 +45,17 @@ IB_DESIGNABLE
  * Change the error display text.
  */
 @property (nonatomic,strong) IBInspectable  NSString  *errorText;
+
 /*
  * Shake line when showing error?.
  */
 @property (assign) IBInspectable  BOOL disableShakeWithError;
+
+
+/*
+ * ACTextAlignment.
+ */
+@property (nonatomic) NSTextAlignment labelAlignment;
 
 
 @property (nonatomic,strong) UILabel *labelPlaceholder;

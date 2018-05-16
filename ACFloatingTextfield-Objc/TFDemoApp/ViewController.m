@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_textFieldPassword becomeFirstResponder];
-
+    _textFieldPassword.labelAlignment = NSTextAlignmentRight;
 }
 
 #pragma mark  UITextfield Delegates
