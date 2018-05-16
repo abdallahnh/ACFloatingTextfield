@@ -50,11 +50,32 @@
 
 #pragma mark :- Drawing Text Rect
 - (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectMake(4, 4, bounds.size.width, bounds.size.height);
+    CGFloat left = 0;
+    CGFloat right = 0;
+    if (self.leftViewMode == UITextFieldViewModeUnlessEditing ||
+        self.leftViewMode == UITextFieldViewModeAlways) {
+        left = self.leftView.bounds.size.width + 10;
+    }
+    if (self.rightViewMode == UITextFieldViewModeUnlessEditing ||
+        self.rightViewMode == UITextFieldViewModeAlways) {
+        right = self.rightView.bounds.size.width;
+    }
+    return CGRectMake(4+left, 1, bounds.size.width-left-right, bounds.size.height);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    return CGRectMake(4, 4, bounds.size.width, bounds.size.height);
+    CGFloat left = 0;
+    CGFloat right = 0;
+    if (self.leftViewMode == UITextFieldViewModeWhileEditing ||
+        self.leftViewMode == UITextFieldViewModeAlways) {
+        left = self.leftView.bounds.size.width + 10;
+    }
+    if (self.rightViewMode == UITextFieldViewModeWhileEditing ||
+        self.rightViewMode == UITextFieldViewModeAlways) {
+        right = self.rightView.bounds.size.width;
+    }
+    
+    return CGRectMake(4+left, 1, bounds.size.width-left-right, bounds.size.height);
 }
 
 #pragma mark  Override Set text
@@ -162,6 +183,15 @@
     if (![self.text isEqualToString:@""]){
         [self floatTheLabel];
     }
+    
+    
+    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 10)];
+    // spacerView.backgroundColor  = [UIColor redColor];
+    spacerView.backgroundColor = [UIColor yellowColor];
+    [self setRightViewMode:UITextFieldViewModeAlways];
+    [self setRightView:spacerView];
+    [self setLeftViewMode:UITextFieldViewModeAlways];
+    [self setLeftView:spacerView];
     
 }
 
